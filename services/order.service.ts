@@ -1,4 +1,4 @@
-import db from "@/lib/db";
+import { OrderStatus as PrismaOrderStatus } from "@prisma/client";import db from "@/lib/db";
 import { OrderStatus, PaymentMethod, PaymentStatus } from "@/lib/constants";
 import { CartService } from "./cart.service";
 import { getPaymentService } from "./payment";
@@ -391,7 +391,7 @@ export class OrderService {
         (p) => p.status === PaymentStatus.COMPLETED && p.razorpayPaymentId
       );
 
-      let targetStatus: string = OrderStatus.CANCELLED;
+      let targetStatus: PrismaOrderStatus = PrismaOrderStatus.CANCELLED;
 
       if (successfulPayment && successfulPayment.razorpayPaymentId) {
         try {
@@ -407,10 +407,10 @@ export class OrderService {
             data: { status: PaymentStatus.REFUNDED },
           });
 
-          targetStatus = OrderStatus.REFUNDED;
+          targetStatus = PrismaOrderStatus.REFUNDED;  
         } catch (err) {
           console.error("Refund processing error on cancel:", err);
-          targetStatus = OrderStatus.CANCELLED;
+          targetStatus = PrismaOrderStatus.CANCELLED;
         }
       }
 
