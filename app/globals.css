@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#f1f3f6] text-[#212121] antialiased selection:bg-[#2874f0] selection:text-white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f3f6;
+}
+::-webkit-scrollbar-thumb {
+  background: #c2c2c2;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #878787;
+}
+
+/* Flipkart Specific Utility Styles */
+.fk-btn-yellow {
+  @apply bg-[#ff9f00] hover:bg-[#f39700] text-white font-semibold py-3 px-6 rounded-sm shadow-sm transition-colors text-center cursor-pointer;
+}
+
+.fk-btn-orange {
+  @apply bg-[#fb641b] hover:bg-[#e6530b] text-white font-semibold py-3 px-6 rounded-sm shadow-sm transition-colors text-center cursor-pointer;
+}
+
+.fk-badge-rating {
+  @apply inline-flex items-center gap-1 bg-[#388e3c] text-white text-xs font-bold px-1.5 py-0.5 rounded-sm;
+}
+
+.fk-assured-tag {
+  @apply italic font-bold text-xs text-[#2874f0] tracking-wide;
+}
